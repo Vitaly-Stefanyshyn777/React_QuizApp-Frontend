@@ -1,41 +1,37 @@
-✨ Key Features
+# _Quiz App_
 
-🧑‍💼 User Registration
-• Register with name, email, phone number (using intl-tel-input), and password.
-• Client-side validation ensures all fields are correctly filled before submission.
+This Quiz Application is developed using _React_ and _Tailwind CSS, offering an engaging and interactive quiz experience. It includes features such as **user authentication, quiz instructions, diverse question formats, a timer-based quiz, and a **results page with attempt history saved in IndexedDB_.
 
-🔐 Authentication
-• Simple login system using localStorage to store user credentials securely.
-• Displays error messages for invalid or empty inputs.
+## _Key Features_
 
-🏠 Home Screen with Instructions
-• Clearly outlines test guidelines.
-• Includes a Start Test button to begin the quiz.
+- _User Registration:_  
+  Users can sign up by entering their full name, email, phone number, and password.
 
-📝 Quiz Flow
-• Includes 5 multiple-choice questions, each with 3 options.
-• Immediate feedback after selecting an answer (correct/incorrect).
-• A 30-minute countdown timer displayed in MM:SS format.
-• Navigation logic to move through the quiz.
-• Visually paired with a themed illustrative image beside the questions.
+- _Authentication:_  
+  Secure login system with credentials stored in localStorage.
 
-📊 Results Summary
-• Displays:
-• ✅ Correct and ❌ incorrect answers.
-• ⏱️ Time taken to complete the quiz.
-• Automatically stores the latest 3 attempts in IndexedDB.
-• Options to:
-• 🔁 Restart the quiz.
-• 🏡 Return to the home screen.
-• ❌ Delete attempt history.
+- _Quiz Overview:_  
+  A dedicated Home page displaying quiz guidelines before users begin the quiz.
 
-📱 Responsive Design
-• Built with Tailwind CSS for a clean and responsive layout.
-• Optimized for:
-• 📱 Mobile devices
-• 💻 Tablets
-• 🖥️ Desktop screens
+- _Engaging Quiz Interface:_
 
-🌐 AJAX-Based Data Handling
-• Data (user info + quiz answers) is sent via AJAX (fetch API) to a backend hosted on Render.
-• Backend endpoint example:
+  - Multiple-choice questions with instant validation.
+  - Numeric input for integer-based questions.
+  - A 30-minute timer (shown in MM:SS format).
+  - Navigation controls for moving between questions.
+
+- _Results & History Tracking:_
+
+  - Shows correct and incorrect responses along with the total time spent.
+  - Saves previous attempts using IndexedDB.
+  - Provides options to restart the quiz or return to the Home page.
+
+- _Responsive UI:_  
+  The interface is designed using _Tailwind CSS_, ensuring a seamless experience across different devices.
+
+## _Getting Started_
+
+### _Requirements_
+
+- Install [Node.js](https://nodejs.org/) (version 14 or newer)
+- Use [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) for package management.

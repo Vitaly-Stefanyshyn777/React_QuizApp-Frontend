@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Home from "./Components/Home";
 import Quiz from "./Components/Quiz";
 import Results from "./Components/Results";
@@ -16,6 +16,18 @@ const App = () => {
     timestamp: null,
   });
 
+  useEffect(() => {
+    if (quizResults.timestamp) {
+      const existingUser = localStorage.getItem("userAccount");
+      if (existingUser) {
+        setUserData(JSON.parse(existingUser));
+        setPhase("results");
+      } else {
+        setPhase("register");
+      }
+    }
+  }, [quizResults.timestamp]);
+
   const handleStartQuiz = () => {
     setPhase("quiz");
   };
@@ -31,7 +43,6 @@ const App = () => {
     };
 
     setQuizResults(fullResults);
-    setPhase("register");
 
     try {
       const response = await fetch(
@@ -51,6 +62,14 @@ const App = () => {
       console.log("Результати тесту успішно надіслані");
     } catch (error) {
       console.error("Помилка надсилання результатів:", error);
+    }
+
+    const existingUser = localStorage.getItem("userAccount");
+    if (existingUser) {
+      setUserData(JSON.parse(existingUser));
+      setPhase("results");
+    } else {
+      setPhase("register");
     }
   };
 
@@ -74,6 +93,7 @@ const App = () => {
 
       if (!response.ok) throw new Error("Submission failed");
 
+      localStorage.setItem("userAccount", JSON.stringify(formData));
       setUserData(formData);
       setPhase("results");
     } catch (error) {
@@ -84,6 +104,12 @@ const App = () => {
 
   const handleRestart = () => {
     setPhase("quiz");
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("userAccount");
+    setUserData(null);
+    setPhase("home");
   };
 
   return (
@@ -118,6 +144,15 @@ const App = () => {
       )}
 
       {phase === "login" && <SignUp onStartQuiz={handleStartQuiz} />}
+
+      {userData && (
+        <button
+          onClick={handleLogout}
+          className="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded"
+        >
+          Logout
+        </button>
+      )}
     </div>
   );
 };

@@ -45,7 +45,6 @@ export default function RegistrationForm({ onSubmit, onBack }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
 
     const fullPhone = iti.current?.getNumber() || "";
@@ -57,12 +56,12 @@ export default function RegistrationForm({ onSubmit, onBack }) {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="bg-gray-800 rounded-lg p-6 md:p-8 shadow-xl"
-    >
-      <h2 className="text-2xl font-bold mb-6 text-white">Registration</h2>
-      <div className="space-y-4">
+    <div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl bg-gray-800 rounded-lg p-6 md:p-10 shadow-xl">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <h2 className="text-2xl font-bold text-white text-center">
+          Registration
+        </h2>
+
         <div>
           <label className="block mb-2 text-white">Full Name</label>
           <input
@@ -114,26 +113,27 @@ export default function RegistrationForm({ onSubmit, onBack }) {
             <p className="text-red-500 text-sm">{errors.password}</p>
           )}
         </div>
-      </div>
 
-      <div className="mt-8 flex gap-4">
-        <button
-          type="button"
-          onClick={onBack}
-          className="bg-gray-600 hover:bg-gray-700 px-6 py-3 rounded flex-1 text-white"
-        >
-          Back
-        </button>
-        <button
-          type="submit"
-          className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded flex-1 text-white"
-        >
-          Submit
-        </button>
-      </div>
-    </form>
+        <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          <button
+            type="button"
+            onClick={onBack}
+            className="bg-gray-600 hover:bg-gray-700 px-6 py-3 rounded text-white w-full sm:w-1/2"
+          >
+            Back
+          </button>
+          <button
+            type="submit"
+            className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded text-white w-full sm:w-1/2"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
+
 RegistrationForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onBack: PropTypes.func.isRequired,

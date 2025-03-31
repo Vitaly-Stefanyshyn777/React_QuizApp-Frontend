@@ -40,6 +40,7 @@ const App = () => {
       ...results,
       wrongAnswers,
       timestamp,
+      timeTaken: results.timeSpent,
     };
 
     setQuizResults(fullResults);
@@ -58,8 +59,6 @@ const App = () => {
 
       if (!response.ok)
         throw new Error("Не вдалося надіслати результати тесту");
-
-      console.log("Результати тесту успішно надіслані");
     } catch (error) {
       console.error("Помилка надсилання результатів:", error);
     }
@@ -113,7 +112,7 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4 relative">
       {phase === "home" && <Home onStartQuiz={handleStartQuiz} />}
 
       {phase === "quiz" && (

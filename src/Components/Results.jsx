@@ -68,8 +68,10 @@ const Results = ({
 
   return (
     <div className="text-center">
-      <h2 className="text-2xl font-semibold">Quiz Completed!</h2>
-      <h3 className="text-lg font-semibold mt-4">User: {user?.name}</h3>
+      <h2 className="text-2xl font-semibold text-white">Quiz Completed!</h2>
+      <h3 className="text-lg font-semibold text-white mt-4">
+        User: {user?.name}
+      </h3>
 
       <p className="text-green-400 mt-4 text-lg">Correct Answers: {score}</p>
       <p className="text-red-400 text-lg">Incorrect Answers: {wrongAnswers}</p>
@@ -78,7 +80,7 @@ const Results = ({
       </p>
 
       <div className="mt-6">
-        <h3 className="text-xl font-semibold">Attempt History</h3>
+        <h3 className="text-xl font-semibold text-white">Attempt History</h3>
         <ul className="mt-2 text-left">
           {attempts.length > 0 ? (
             attempts.map((attempt) => (
